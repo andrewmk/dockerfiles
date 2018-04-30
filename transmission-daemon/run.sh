@@ -1,7 +1,3 @@
-[![](https://images.microbadger.com/badges/image/alexhaydock/transmission-daemon.svg)](https://microbadger.com/images/alexhaydock/transmission-daemon "Get your own image badge on microbadger.com")
-
-### run.sh
-```sh
 #!/bin/sh
 
 TRANSMISSION_CONFIG_DIR="/home/user/Transmission/config"
@@ -19,4 +15,3 @@ docker run -d \
     -p $TRANSMISSION_DATA_PORT:$TRANSMISSION_DATA_PORT \
     -p $TRANSMISSION_DATA_PORT:$TRANSMISSION_DATA_PORT/udp \
 alexhaydock/transmission-daemon
-```

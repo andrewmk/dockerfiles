@@ -1,0 +1,9 @@
+# Gems that GitHub suggest installing for offline GitHub Pages dev work
+source 'https://rubygems.org'
+gem 'github-pages', group: :jekyll_plugins
+
+# Gems that are commonly required across a few different themes and thus
+# are worth installing in the Docker container itself.
+gem 'coderay'
+gem 'rake'
+gem 'yajl-ruby'
