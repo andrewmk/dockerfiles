@@ -1,3 +1,6 @@
+# Generic .gitignore
+# Ignores most common tempfiles for Linux/macOS/Windows
+
 *~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
@@ -11,13 +14,14 @@
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-# General
+
+# General macOS temp files
 .DS_Store
 .AppleDouble
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -37,6 +41,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
