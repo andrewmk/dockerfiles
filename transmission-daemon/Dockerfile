@@ -1,7 +1,9 @@
-FROM alpine
+FROM alpine:3.7
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-RUN apk update && apk add transmission-daemon
+# Install Transmission
+RUN apk update && \
+    apk add transmission-daemon
 
 # Create config and download directories to mount into
 RUN mkdir -p /transmission/config && \
@@ -9,10 +11,9 @@ RUN mkdir -p /transmission/config && \
 RUN mkdir -p /zpools/x && \
     chmod -R 1777 /zpools
 
-# Create the startup script
-RUN echo "#!/bin/sh" > /transmission/start.sh && \
-    echo "/usr/bin/transmission-daemon && sleep 365d" >> /transmission/start.sh && \
-    chmod +x /transmission/start.sh
+# Add the startup script
+ADD start.sh /transmission/start.sh
+RUN chmod +x /transmission/start.sh
 
 # Environment settings
 USER transmission
