@@ -38,6 +38,6 @@ USER tor
 # (this script passes arguments given to the Docker command
 # straight to the OnionScan binary. If no argument is given
 # then CMD will apply and OnionScan will run a scan of the
-# Facebook hidden service).
+# DuckDuckGo hidden service).
 ENTRYPOINT ["/opt/start.sh"]
-CMD ["facebookcorewwwi.onion"]
+CMD ["3g2upl4pq6kufc4m.onion"]
