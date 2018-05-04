@@ -1,3 +1,7 @@
+# Ignore Twitter API tokens from tweets_analyzer
+secrets-secret.py
+
+
 # Generic .gitignore
 # Ignores most common tempfiles for Linux/macOS/Windows
 
