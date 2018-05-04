@@ -1,13 +1,15 @@
 [![](https://images.microbadger.com/badges/image/alexhaydock/jekyll.svg)](https://microbadger.com/images/alexhaydock/jekyll "Get your own image badge on microbadger.com")
 
-### run.sh
 
-Passes the current working directory through to Jekyll in the container.
+### How to Use
+Run this Docker container as follows (passes the current working directory through to Jekyll in the container):
 
-The user can then run `jekyll serve -H 0.0.0.0` or `jekyll build -H 0.0.0.0`.
-
+To serve the current directory on http://127.0.0.1:4000:
 ```sh
-#!/bin/sh
+docker run -it -v `pwd`:/tmp/jekyll -p 4000:4000 alexhaydock/jekyll serve -H 0.0.0.0
+```
 
-docker run -it -v `pwd`:/tmp/jekyll -p 4000:4000 alexhaydock/jekyll
+To run the Jekyll build process without opening a server:
+```sh
+docker run -it -v `pwd`:/tmp/jekyll alexhaydock/jekyll build
 ```

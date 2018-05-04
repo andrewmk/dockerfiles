@@ -1,4 +1,4 @@
-[![](https://images.microbadger.com/badges/image/alexhaydock/onionscan.svg)](https://microbadger.com/images/alexhaydock/onionsite.onion "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/alexhaydock/onionscan.svg)](https://microbadger.com/images/alexhaydock/onionscan "Get your own image badge on microbadger.com")
 
 ### How to Use
 Run this Docker container as follows (where `onionsite.onion` is the onion service you wish to scan):

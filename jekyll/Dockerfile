@@ -17,4 +17,7 @@ RUN bundle install && \
     rm -v /tmp/Gemfile /tmp/Gemfile.lock
 
 # Run
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/usr/bin/jekyll"]
+
+# If no arguments are provided by the user, run a server on 0.0.0.0
+CMD ["-H","0.0.0.0","serve"]
