@@ -10,16 +10,14 @@ ENV GOPATH /usr/local
 RUN apk update && \
     apk add build-base git go tor
 
-# Install Go Deps
-RUN go get github.com/HouzuoGuo/tiedot
-RUN go get golang.org/x/crypto/openpgp
-RUN go get golang.org/x/net/proxy
-RUN go get golang.org/x/net/html
-RUN go get github.com/rwcarlsen/goexif/exif
-RUN go get github.com/rwcarlsen/goexif/tiff
-
-# Install OnionScan
-RUN go get github.com/s-rah/onionscan
+# Install Deps and OnionScan
+RUN go get github.com/HouzuoGuo/tiedot && \
+    go get golang.org/x/crypto/openpgp && \
+    go get golang.org/x/net/proxy && \
+    go get golang.org/x/net/html && \
+    go get github.com/rwcarlsen/goexif/exif && \
+    go get github.com/rwcarlsen/goexif/tiff && \
+    go get github.com/s-rah/onionscan
 
 # Configure Tor to run in the background
 RUN echo "RunAsDaemon 1" > /etc/tor/torrc
