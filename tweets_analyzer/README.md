@@ -3,7 +3,7 @@ This is a containerized version of [tweets_analyzer](https://github.com/x0rz/twe
 
 This Docker container requires a Twitter API secret to be generated so cannot be pushed to Docker Hub.
 
-Visit [https://apps.twitter.com/] to generate API keys. Save these in the file `secrets-secret.py` (a template can be found here as `secrets.py`).
+Visit https://apps.twitter.com/ to generate API keys. Save these in the file `secrets-secret.py` (a template can be found here as `secrets.py`).
 
 After adding the API keys to `secrets-secret.py`, build this Docker container with:
 ```sh

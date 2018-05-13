@@ -4,9 +4,9 @@
 ### How to Use
 Run this Docker container as follows (passes the current working directory through to Jekyll in the container):
 
-To serve the current directory on http://127.0.0.1:4000:
+To serve the current directory on http://127.0.0.1:4000 (the `CMD` line in the Dockerfile handles setting the correct listen address):
 ```sh
-docker run -it -v `pwd`:/tmp/jekyll -p 4000:4000 alexhaydock/jekyll serve -H 0.0.0.0
+docker run -it -v `pwd`:/tmp/jekyll -p 4000:4000 alexhaydock/jekyll
 ```
 
 To run the Jekyll build process without opening a server:

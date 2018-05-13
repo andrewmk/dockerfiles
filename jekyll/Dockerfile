@@ -20,4 +20,4 @@ RUN bundle install && \
 ENTRYPOINT ["/usr/bin/jekyll"]
 
 # If no arguments are provided by the user, run a server on 0.0.0.0
-CMD ["-H","0.0.0.0","serve"]
+CMD ["serve","-H","0.0.0.0"]
