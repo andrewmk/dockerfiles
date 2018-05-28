@@ -1,3 +1,2 @@
 #!/bin/sh
-
-/usr/bin/transmission-daemon && sleep 365d
+/usr/bin/transmission-daemon && sleep 999d

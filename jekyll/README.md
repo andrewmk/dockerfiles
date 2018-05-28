@@ -13,3 +13,8 @@ To run the Jekyll build process without opening a server:
 ```sh
 docker run -it -v `pwd`:/tmp/jekyll alexhaydock/jekyll build
 ```
+
+Alternatively, you can save `docker-compose.yml` into the root directory of your Jekyll project and quickly start a Jekyll server with:
+```sh
+docker-compose up --force-recreate
+```
