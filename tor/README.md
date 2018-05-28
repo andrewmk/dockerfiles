@@ -21,7 +21,7 @@ TOR_LISTEN_PORT=19050
 docker rm tor
 
 docker run -d \
-    --cap-drop=all \
+    --cap-drop=ALL \
     --name tor \
     -p $DNS_LISTEN_PORT:5353/udp \
     -p $TOR_LISTEN_PORT:9050 \
