@@ -1,7 +1,7 @@
 version: "3"
 services:
   transmission:
-    image: alexhaydock/transmission
+    image: alexhaydock/transmission-daemon
     container_name: transmission
     cap_drop:
       - ALL
