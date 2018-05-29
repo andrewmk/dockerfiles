@@ -5,7 +5,7 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 ## (The shadow package gives us access to the usermod and groupmod commands
 ## which allow us to change the UID and GID of the 'transmission' user/group).
 # In this command we will also create a directory to put our Transmission
-# config inside.
+# config inside and create our startup script for launching Transmission.
 RUN apk update && \
     apk add transmission-daemon shadow && \
     usermod -u 1000 transmission && \
@@ -14,12 +14,9 @@ RUN apk update && \
     chmod -R 1777 /transmission && \
     echo "#!/bin/sh" > /transmission/start.sh && \
     echo "/usr/bin/transmission-daemon && sleep 999d" >> /transmission/start.sh && \
+    echo "TRANSMISSION_HOME='/transmission/config'" >> /transmission/start.sh && \
     chmod +x /transmission/start.sh
 
-# Environment settings
-USER transmission
-ENV TRANSMISSION_HOME /transmission/config
-WORKDIR /transmission/config
-
 # Run
+USER transmission
 ENTRYPOINT ["/transmission/start.sh"]
