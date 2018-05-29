@@ -1,2 +1,5 @@
-SOCKSPort 0.0.0.0:9050
+# Listen for SOCKS5 connections on TCP Port 9250
+SOCKSPort 0.0.0.0:9250
+
+# Listen for DNS queries on UDP Port 5353
 DNSPort 0.0.0.0:5353
