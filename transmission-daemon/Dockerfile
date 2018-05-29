@@ -13,8 +13,8 @@ RUN apk update && \
     mkdir -p /transmission/config && \
     chmod -R 1777 /transmission && \
     echo "#!/bin/sh" > /transmission/start.sh && \
-    echo "/usr/bin/transmission-daemon && sleep 999d" >> /transmission/start.sh && \
     echo "TRANSMISSION_HOME='/transmission/config'" >> /transmission/start.sh && \
+    echo "/usr/bin/transmission-daemon && sleep 999d" >> /transmission/start.sh && \
     chmod +x /transmission/start.sh
 
 # Run
