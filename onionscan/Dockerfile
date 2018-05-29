@@ -6,12 +6,10 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 # an area that's in our default $PATH.
 ENV GOPATH /usr/local
 
-# Install Package Deps
+# Install APK Deps, then Go Deps, then Onionscan itself
 RUN apk update && \
-    apk add build-base git go tor
-
-# Install Deps and OnionScan
-RUN go get github.com/HouzuoGuo/tiedot && \
+    apk add build-base git go tor && \
+    go get github.com/HouzuoGuo/tiedot && \
     go get golang.org/x/crypto/openpgp && \
     go get golang.org/x/net/proxy && \
     go get golang.org/x/net/html && \
