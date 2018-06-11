@@ -1,0 +1,13 @@
+version: "3"
+services:
+  transmission:
+    image: alexhaydock/tor:arm32v7
+    container_name: tor
+    cap_drop:
+      - ALL
+    ports:
+      - "5353:5353/udp"
+      - "9250:9250"
+    tmpfs:
+      - /run
+      - /tmp
