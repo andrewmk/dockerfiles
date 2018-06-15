@@ -15,12 +15,15 @@ ADD Gemfile /tmp/Gemfile
 # Install Ruby and the build packages we need
 RUN set -xe \
     \
-# Install package dependencies
-    && apk --no-cache add gcc g++ make ruby ruby-bundler ruby-dev ruby-json zlib zlib-dev \
+# Install core package dependencies
+    && apk --no-cache add build-base ruby ruby-bundler ruby-dev ruby-json zlib zlib-dev \
     \
 # Install GitHub Pages
     && bundle install \
-    && rm -v /tmp/Gemfile /tmp/Gemfile.lock
+    && rm -v /tmp/Gemfile /tmp/Gemfile.lock \
+    \
+# Remove build packages and compilers to slim down final image
+    && apk del build-base
 
 # Run
 # (If no arguments are provided by the user then CMD applies and we will start a server on 0.0.0.0)
