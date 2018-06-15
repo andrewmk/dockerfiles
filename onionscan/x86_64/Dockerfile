@@ -32,7 +32,10 @@ RUN set -xe \
     \
 # Create a directory for us to execute OnionScan inside
     && mkdir /opt/onionscan \
-    && chown -R tor /opt/onionscan
+    && chown -R tor /opt/onionscan \
+    \
+# Remove build packages and compilers to slim down final image
+    && apk del build-base
 
 # Set our workdir and run as the 'tor' user so we can launch the Tor binary
 WORKDIR /opt/onionscan
