@@ -1,9 +1,15 @@
 # dockerfiles
 Dockerfiles for use with Docker and Docker Hub.
 
-Mostly all based on Alpine and fixed at a particular version (currently 3.7) until I have had time to test any future releases.
+My Docker Hub page is [here](https://hub.docker.com/u/alexhaydock/) and you can pull `x86_64` containers from there for convenience if you wish.
+
+Most `x86_64` containers are based on Alpine and fixed at a particular version (currently 3.7) for size and stability.
+
+Some containers are also available for the `arm32v7` architecture (Raspberry Pi 2/3). These containers must be built manually as Docker Hub only allows automated builds for `x86_64` at the moment. These containers are generally all based on Ubuntu 18.04 LTS, as there is not yet a base Alpine image which supports `arm32v7`.
 
 ### Build Status
+**alexhaydock/htop:** [![](https://images.microbadger.com/badges/image/alexhaydock/htop.svg)](https://microbadger.com/images/alexhaydock/htop "Get your own image badge on microbadger.com")
+
 **alexhaydock/jekyll:** [![](https://images.microbadger.com/badges/image/alexhaydock/jekyll.svg)](https://microbadger.com/images/alexhaydock/jekyll "Get your own image badge on microbadger.com")
 
 **alexhaydock/massarchive:** [![](https://images.microbadger.com/badges/image/alexhaydock/massarchive.svg)](https://microbadger.com/images/alexhaydock/massarchive "Get your own image badge on microbadger.com")

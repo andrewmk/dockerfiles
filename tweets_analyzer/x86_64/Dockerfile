@@ -15,8 +15,7 @@ ADD secrets-secret.py /opt/secrets.py
 RUN set -xe \
     \
 # Install Ruby and the build packages we need
-    && apk update \
-    && apk add python2 python2-dev py2-pip gcc musl-dev \
+    && apk --no-cache add python2 python2-dev py2-pip gcc musl-dev \
     \
 # Link locale.h to xlocale.h (Fixes issue with xlocale.h missing during pip install)
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \

@@ -16,8 +16,7 @@ ADD Gemfile /tmp/Gemfile
 RUN set -xe \
     \
 # Install package dependencies
-    && apk update \
-    && apk add gcc g++ make ruby ruby-bundler ruby-dev ruby-json zlib zlib-dev \
+    && apk --no-cache add gcc g++ make ruby ruby-bundler ruby-dev ruby-json zlib zlib-dev \
     \
 # Install GitHub Pages
     && bundle install \

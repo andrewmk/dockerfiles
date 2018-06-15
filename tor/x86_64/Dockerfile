@@ -4,8 +4,7 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 RUN set -xe \
     \
 # Install Tor
-    && apk update \
-    && apk add tor \
+    && apk --no-cache add tor \
     \
 # Tell Tor to listen for SOCKS5 connections on TCP Port 9250
     && echo "SOCKSPort 0.0.0.0:9250" > /etc/torrc \
