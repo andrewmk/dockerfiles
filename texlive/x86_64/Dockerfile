@@ -10,8 +10,9 @@ RUN set -xe \
     && apt-get update \
     && apt-get -y install texlive-full \
     \
-# Clear Apt cache
-    && apt-get clean
+# Clear package cache to save space
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/
 
 # Run
 ENTRYPOINT ["/bin/bash"]

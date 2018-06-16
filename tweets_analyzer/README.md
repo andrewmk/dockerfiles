@@ -12,5 +12,5 @@ docker build -t tweets_analyzer .
 
 Now you can run this container with (where `username` is the user you wish to analyze):
 ```sh
-docker run -it tweets_analyzer username
+docker run --rm -it tweets_analyzer username
 ```
