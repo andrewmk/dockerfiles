@@ -21,6 +21,7 @@ RUN set -xe \
     \
 # Remove the software-properties-common package
     && apt-get -y purge software-properties-common \
+    && apt-get -y autoremove \
     \
 # Clear package cache to save space
     && apt-get clean \
