@@ -1,4 +1,4 @@
-[![](https://images.microbadger.com/badges/image/alexhaydock/massarchive.svg)](https://hub.docker.com/r/alexhaydock/massarchive "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/alexhaydock/massarchive.svg)](https://hub.docker.com/r/alexhaydock/massarchive "Badge")
 
 ### How to Use
 Run this Docker container as follows (where `example.com` is the site you wish to archive):

@@ -1,4 +1,4 @@
-[![](https://images.microbadger.com/badges/image/alexhaydock/jekyll.svg)](https://hub.docker.com/r/alexhaydock/jekyll "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/alexhaydock/jekyll.svg)](https://hub.docker.com/r/alexhaydock/jekyll "Badge")
 
 ### How to Use (Recommended)
 You can save `docker-compose.yml` into the root directory of your Jekyll project and quickly start a Jekyll server with:

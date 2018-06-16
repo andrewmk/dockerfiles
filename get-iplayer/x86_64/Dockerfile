@@ -27,6 +27,6 @@ RUN set -xe \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
 
-WORKDIR /tmp/iPlayer
+WORKDIR /tmp/get-iplayer
 ENTRYPOINT ["/usr/bin/get-iplayer"]
 CMD ["--help"]
