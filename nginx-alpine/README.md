@@ -1,5 +1,11 @@
 [![](https://images.microbadger.com/badges/image/alexhaydock/nginx-alpine.svg)](https://hub.docker.com/r/alexhaydock/nginx-alpine "Badge")
 
+This container is based on the official Nginx Alpine image. My branch:
+* Changes UID and GID of `nginx` to 1000.
+* Enables directory indexing.
+* Enabled gzip compression.
+* Listens on port `8080` inside the container instead of `80`.
+
 ### How to Use
 You can create a quick autoindex-capable webserver with a script like the following:
 ```sh
@@ -11,9 +17,7 @@ sudo chmod -R 775 "/zpools/archive/priv/www"
 
 docker run -d \
     --name nginx \
-    --tmpfs /tmp \
     --tmpfs /var/log/nginx \
-    --tmpfs /var/run \
     -p 80:8080 \
     -v "/zpools/archive/priv/www":"/usr/share/nginx/html":ro \
 alexhaydock/nginx-alpine
