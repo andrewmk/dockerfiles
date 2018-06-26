@@ -1,5 +1,4 @@
-# Uses the 32-bit Ubuntu image as we want to run a 32-bit WINE app
-FROM i386/ubuntu:18.04
+FROM ubuntu:18.04
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 # Setup Environment for Ubuntu

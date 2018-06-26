@@ -22,5 +22,5 @@ Some containers are also available for the `arm32v7` architecture (Raspberry Pi 
 | alexhaydock/tor | [![](https://images.microbadger.com/badges/image/alexhaydock/tor.svg)](https://hub.docker.com/r/alexhaydock/tor "Badge") |
 | alexhaydock/transmission-daemon | [![](https://images.microbadger.com/badges/image/alexhaydock/transmission-daemon.svg)](https://hub.docker.com/r/alexhaydock/transmission-daemon "Badge") |
 | alexhaydock/tweets_analyzer | Local build only due to requiring secret API keys. |
-| alexhaydock/wine32 | [![](https://images.microbadger.com/badges/image/alexhaydock/wine32.svg)](https://hub.docker.com/r/alexhaydock/wine32 "Badge") |
+| alexhaydock/wine-stable | [![](https://images.microbadger.com/badges/image/alexhaydock/wine-stable.svg)](https://hub.docker.com/r/alexhaydock/wine-stable "Badge") |
 | alexhaydock/youtube-dl | [![](https://images.microbadger.com/badges/image/alexhaydock/youtube-dl.svg)](https://hub.docker.com/r/alexhaydock/youtube-dl "Badge") |
