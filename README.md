@@ -10,6 +10,7 @@ Some containers are also available for the `arm32v7` architecture (Raspberry Pi 
 ### Build Status
 | Image | Status |
 |-------------------------|-------|
+| alexhaydock/beets | [![](https://images.microbadger.com/badges/image/alexhaydock/beets.svg)](https://hub.docker.com/r/alexhaydock/beets "Badge") |
 | alexhaydock/get-iplayer | [![](https://images.microbadger.com/badges/image/alexhaydock/get-iplayer.svg)](https://hub.docker.com/r/alexhaydock/get-iplayer "Badge") |
 | alexhaydock/glances | [![](https://images.microbadger.com/badges/image/alexhaydock/glances.svg)](https://hub.docker.com/r/alexhaydock/glances "Badge") |
 | alexhaydock/htop | [![](https://images.microbadger.com/badges/image/alexhaydock/htop.svg)](https://hub.docker.com/r/alexhaydock/htop "Badge") |

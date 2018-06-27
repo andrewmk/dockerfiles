@@ -10,7 +10,7 @@ RUN set -xe \
     && python3 -m pip install beets
 
 # Add config
-ADD ../config.yaml /root/.config/beets/config.yaml
+ADD config.yaml /root/.config/beets/config.yaml
 
 # Run
 ENTRYPOINT ["/usr/bin/beet"]
