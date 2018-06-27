@@ -7,7 +7,7 @@ RUN set -xe \
     && apk --no-cache add python3 flac \
     \
 # Install Beets
-    && python3 -m pip install beets
+    && python3 -m pip install beets pylast
 
 # Add config
 ADD config.yaml /root/.config/beets/config.yaml
