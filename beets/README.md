@@ -2,14 +2,17 @@
 
 ### How to Use
 To use this container, I recommend adding a function to be loaded as part of your `~/.bashrc` that does something like the following:
+
+(In this example I have used the `--memory` and `--cpus` flags to constrain the container to using a maximum of 512MB RAM and 1 full CPU core. This is because Beets is a huge Python script and I intend to run this on my main NAS. Python scripts can sometimes go rogue and we can use Docker to make sure it can never interfere with the main system.)
 ```sh
 function beet {
     docker run --rm it \
-        --name beets \
-        -v /zpools/archive/arc/music/.beets/:/opt/.beets/ \
-        -v /zpools/archive/arc/music/Library/:/opt/library/ \
-        -v /zpools/archive/priv/newmusic/:/zpools/archive/priv/newmusic/ \
-        alexhaydock/beets
+        --memory='512m' \
+        --cpus='1' \
+        -v '/zpools/archive/arc/music/.beets/':'/opt/.beets/' \
+        -v '/zpools/archive/arc/music/Library/':'/opt/library/' \
+        -v '/zpools/archive/priv/newmusic/':'/zpools/archive/priv/newmusic/' \
+        alexhaydock/beets $@
     }
 ```
 
