@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   tor:
-    image: alexhaydock/tor:arm32v7
+    image: alexhaydock/tor
     container_name: tor
     ports:
       - "5353:5353/udp"

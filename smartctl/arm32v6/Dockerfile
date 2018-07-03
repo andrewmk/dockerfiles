@@ -1,8 +1,9 @@
 #
-# docker run --privileged --rm alexhaydock/smartctl --all /dev/sda
+# docker build -t smartctl .
+# docker run --privileged --rm smartctl --all /dev/sda
 #
 
-FROM alpine:3.7
+FROM arm32v6/alpine:3.7
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 RUN apk --no-cache add smartmontools

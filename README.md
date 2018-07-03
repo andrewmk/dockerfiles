@@ -5,7 +5,7 @@ My Docker Hub page is [here](https://hub.docker.com/u/alexhaydock/) and you can 
 
 Most `x86_64` containers are based on Alpine and fixed at a particular version (currently 3.7) for size and stability.
 
-Some containers are also available for the `arm32v7` architecture (Raspberry Pi 2/3). These containers must be built manually as Docker Hub only allows automated builds for `x86_64` at the moment. These containers are generally all based on Ubuntu 18.04 LTS, as there is not yet a base Alpine image which supports `arm32v7`.
+Some containers are also intended for use on Raspberry Pi systems. These containers are generally based on the `arm32v6` build of Alpine, as there is not yet a base Alpine image which supports `arm32v7`. These containers must be built locally, as Docker Hub does not offer automated builds for non-x86 architectures.
 
 ### Build Status
 | Image | Status |
