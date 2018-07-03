@@ -19,7 +19,6 @@ Some containers are also intended for use on Raspberry Pi systems. These contain
 | alexhaydock/nginx-alpine | [![](https://images.microbadger.com/badges/image/alexhaydock/nginx-alpine.svg)](https://hub.docker.com/r/alexhaydock/nginx-alpine "Badge") |
 | alexhaydock/onionscan | [![](https://images.microbadger.com/badges/image/alexhaydock/onionscan.svg)](https://hub.docker.com/r/alexhaydock/onionscan "Badge") |
 | alexhaydock/smartctl | [![](https://images.microbadger.com/badges/image/alexhaydock/smartctl.svg)](https://hub.docker.com/r/alexhaydock/smartctl "Badge") |
-| alexhaydock/texlive | Work in progress. |
 | alexhaydock/tor | [![](https://images.microbadger.com/badges/image/alexhaydock/tor.svg)](https://hub.docker.com/r/alexhaydock/tor "Badge") |
 | alexhaydock/transmission-daemon | [![](https://images.microbadger.com/badges/image/alexhaydock/transmission-daemon.svg)](https://hub.docker.com/r/alexhaydock/transmission-daemon "Badge") |
 | alexhaydock/tweets_analyzer | Local build only due to requiring secret API keys. |
