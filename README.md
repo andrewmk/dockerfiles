@@ -1,9 +1,9 @@
-# dockerfiles
-Dockerfiles for use with Docker and Docker Hub.
+# Dockerfiles
+These are my Dockerfiles for use with Docker and Docker Hub.
 
 My Docker Hub page is [here](https://hub.docker.com/u/alexhaydock/) and you can pull `x86_64` containers from there for convenience if you wish.
 
-Most `x86_64` containers are based on Alpine and fixed at a particular version (currently 3.7) for size and stability.
+Most of my containers are based on Alpine Linux and fixed at a particular version (currently `alpine:3.7`) for size and stability.
 
 Some containers are also intended for use on Raspberry Pi systems. These containers are generally based on the `arm32v6` build of Alpine, as there is not yet a base Alpine image which supports `arm32v7`. These containers must be built locally, as Docker Hub does not offer automated builds for non-x86 architectures.
 
@@ -19,6 +19,7 @@ Some containers are also intended for use on Raspberry Pi systems. These contain
 | alexhaydock/nginx-alpine | [![](https://images.microbadger.com/badges/image/alexhaydock/nginx-alpine.svg)](https://hub.docker.com/r/alexhaydock/nginx-alpine "Badge") |
 | alexhaydock/onionscan | [![](https://images.microbadger.com/badges/image/alexhaydock/onionscan.svg)](https://hub.docker.com/r/alexhaydock/onionscan "Badge") |
 | alexhaydock/smartctl | [![](https://images.microbadger.com/badges/image/alexhaydock/smartctl.svg)](https://hub.docker.com/r/alexhaydock/smartctl "Badge") |
+| alexhaydock/tinymediamanager | [![](https://images.microbadger.com/badges/image/alexhaydock/tinymediamanager.svg)](https://hub.docker.com/r/alexhaydock/tinymediamanager "Badge") |
 | alexhaydock/tor | [![](https://images.microbadger.com/badges/image/alexhaydock/tor.svg)](https://hub.docker.com/r/alexhaydock/tor "Badge") |
 | alexhaydock/transmission-daemon | [![](https://images.microbadger.com/badges/image/alexhaydock/transmission-daemon.svg)](https://hub.docker.com/r/alexhaydock/transmission-daemon "Badge") |
 | alexhaydock/tweets_analyzer | Local build only due to requiring secret API keys. |

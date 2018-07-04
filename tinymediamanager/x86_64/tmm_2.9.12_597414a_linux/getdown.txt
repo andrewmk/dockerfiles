@@ -1,0 +1,200 @@
+# The URL from which the client is downloaded
+appbase = http://release.tinymediamanager.org/build/
+mirror = https://tinymediamanager.ci.cloudbees.com/job/tinyMediaManager-RELEASE/ws/build/
+
+# UI Configuration
+ui.name = tinyMediaManager
+ui.background_image = splashscreen.png
+ui.icon = tmm.png
+ui.progress = 22, 272, 440, 21
+ui.progress_text = 000000
+ui.status = 30, 300, 450, 18
+ui.status_text = 000000
+ui.mac_dock_icon = ../tmm.icns
+ui.hide_decorations = true
+
+# Application jar files, on classpath (generated from claspath in build.xml)
+code = tmm.jar
+code = lib/JTattoo.jar
+code = lib/animated-gif-lib.jar
+code = lib/api-scraper.jar
+code = lib/asm.jar
+code = lib/betterbeansbinding-core.jar
+code = lib/betterbeansbinding-el.jar
+code = lib/betterbeansbinding-swingbinding.jar
+code = lib/cling-core.jar
+code = lib/cling-support.jar
+code = lib/commons-codec.jar
+code = lib/commons-io.jar
+code = lib/commons-lang3.jar
+code = lib/commons-logging.jar
+code = lib/converter-gson.jar
+code = lib/glazedlists_java15.jar
+code = lib/gson.jar
+code = lib/h2-mvstore.jar
+code = lib/image-viewer.jar
+code = lib/imgscalr-lib.jar
+code = lib/jackson-annotations.jar
+code = lib/jackson-core.jar
+code = lib/jackson-databind.jar
+code = lib/japura-gui.jar
+code = lib/japura-util.jar
+code = lib/jgoodies-common.jar
+code = lib/jgoodies-forms.jar
+code = lib/jmte.jar
+code = lib/jna-platform.jar
+code = lib/jna.jar
+code = lib/joda-time.jar
+code = lib/json.jar
+code = lib/jsoup.jar
+code = lib/jspf-core.jar
+code = lib/jsr305.jar
+code = lib/jtidy.jar
+code = lib/logback-classic.jar
+code = lib/logback-core.jar
+code = lib/logging-interceptor.jar
+code = lib/loop-fs-api.jar
+code = lib/loop-fs-iso-impl.jar
+code = lib/loop-fs-spi.jar
+code = lib/miglayout-core.jar
+code = lib/miglayout-swing.jar
+code = lib/nanohttpd.jar
+code = lib/okhttp-urlconnection.jar
+code = lib/okhttp.jar
+code = lib/okio.jar
+code = lib/org.apache.oltu.oauth2.client.jar
+code = lib/org.apache.oltu.oauth2.common.jar
+code = lib/resources.jar
+code = lib/retrofit-1.9.0.jar
+code = lib/retrofit-2.1.0.jar
+code = lib/retrofit1-okhttp3-client.jar
+code = lib/seamless-http.jar
+code = lib/seamless-swing.jar
+code = lib/seamless-util.jar
+code = lib/seamless-xml.jar
+code = lib/slf4j-api.jar
+code = lib/trakt-java.jar
+
+
+# strings added 1:1 to classpath
+plugin = locale/*
+classpath = locale/*
+
+# plugins
+resource = plugins/scraper-anidb.jar
+resource = plugins/scraper-animated.jar
+resource = plugins/scraper-fanarttv.jar
+resource = plugins/scraper-hdtrailers.jar
+resource = plugins/scraper-imdb.jar
+resource = plugins/scraper-kodi.jar
+resource = plugins/scraper-moviemeter.jar
+resource = plugins/scraper-ofdb.jar
+resource = plugins/scraper-omdbapi.jar
+resource = plugins/scraper-opensubtitles.jar
+resource = plugins/scraper-tmdb.jar
+resource = plugins/scraper-trakt.jar
+resource = plugins/scraper-tvdb.jar
+resource = plugins/scraper-zelluloid.jar
+
+
+# files to be deleted
+# delete = abc.jar
+
+# cleanup - check folder for unreferenced files and delete
+deleteAbandonedFilesInDir = lib
+
+resource = [windows] tinyMediaManager.new                   #rename to new, for self-update
+resource = [windows] tinyMediaManagerUpd.new                #rename to new, for self-update
+resource = [windows] tinyMediaManagerCMD.new                #rename to new, for self-update
+resource = [!windows] tinyMediaManagerCMD.sh
+resource = [!windows] tinyMediaManager.sh
+resource = [!windows] tinyMediaManagerUpdater.sh
+resource = [mac os x] tinyMediaManagerOSX.sh
+resource = [mac os x] JavaApplicationStub.new               #rename to new, for self-update
+resource = [mac os x] Info.plist
+resource = getdown-new.jar
+resource = version
+resource = splashscreen.png
+resource = tmm.png
+resource = changelog.txt
+
+# translations
+resource = locale/messages_cs.properties
+resource = locale/messages_da.properties
+resource = locale/messages_de.properties
+resource = locale/messages_el.properties
+resource = locale/messages_es.properties
+resource = locale/messages_fa.properties
+resource = locale/messages_fr.properties
+resource = locale/messages_hu.properties
+resource = locale/messages_it.properties
+resource = locale/messages_ko.properties
+resource = locale/messages_nl.properties
+resource = locale/messages_no.properties
+resource = locale/messages_pl.properties
+resource = locale/messages_pt.properties
+resource = locale/messages_pt_BR.properties
+resource = locale/messages_ru.properties
+resource = locale/messages_sk.properties
+resource = locale/messages_sr.properties
+resource = locale/messages_sv.properties
+resource = locale/messages_tr.properties
+resource = locale/messages_uk.properties
+resource = locale/messages_vi.properties
+resource = locale/messages_zh.properties
+
+
+# mediainfo native libs
+resource = [mac os x] native/mac/libmediainfo.dylib
+resource = [windows-amd64] native/windows-x64/MediaInfo.dll
+resource = [windows-x64] native/windows-x64/MediaInfo.dll
+resource = [windows-x86] native/windows-x86/MediaInfo.dll
+resource = [windows-x86] native/windows-x86/mingwm10.dll
+
+# templates
+resource = templates/readme.txt
+resource = templates/DataTablesHTML.jar
+resource = templates/DetailExampleHtml.jar
+resource = templates/DetailExample2Html.jar
+resource = templates/ExcelXml.jar
+resource = templates/ListExampleCsv.jar
+resource = templates/ListExampleHtml.jar
+resource = templates/ListExampleXml.jar
+resource = templates/jQueryliscious.jar
+resource = templates/DeadSix27HTMLGenerator.jar
+resource = templates/DeadSix27HTMLGeneratorTV.jar
+resource = templates/MobileMovieSearch.jar
+resource = templates/SimpleConfluence.jar
+resource = templates/TvShowDetailExampleXml.jar
+
+# The main entry point for the application (prefix needed for GD params)
+class = org.tinymediamanager.TinyMediaManager
+tmm.class = org.tinymediamanager.TinyMediaManager
+
+# allow offline use
+allow_offline = true
+
+# do not create .v files
+skip_md5_cache = true
+
+# jvm args
+#####################################################################################
+# NOTE: please consider to write fundamental changes to the commandline start scripts
+# and all other launchers too
+##################################################################################### 
+jvmarg = -XX:+IgnoreUnrecognizedVMOptions
+jvmarg = --add-modules=java.xml.bind
+jvmarg = --add-modules=java.xml.ws
+jvmarg = -Xms64m
+jvmarg = -Xmx512m
+jvmarg = -Xss512k
+jvmarg = [windows] -Dsun.java2d.d3d=false
+jvmarg = -splash:splashscreen.png
+jvmarg = -Djava.net.preferIPv4Stack=true
+jvmarg = -Dfile.encoding=UTF-8
+jvmarg = -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/TextMatchers,matches
+jvmarg = -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy,indexOf
+jvmarg = [mac os x] -Dapple.awt.graphics.UseQuartz=true
+jvmarg = [mac os x] -Xdock:name=tinyMediaManager
+jvmarg = [mac os x] -Dapple.eawt.quitStrategy=CLOSE_ALL_WINDOWS
+jvmarg = -Djna.nosys=true

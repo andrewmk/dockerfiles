@@ -1,0 +1,252 @@
+Version 2.9.12
+=======================
+x display Kodi scrapers at the end of the list
+x fixed imdb scraper: parsing of numbers in RU
+x fixed loading of the TVDB plugin
+x fixed movie renamer $1/$2 tokens (adhere ASCII replacement if set)
+x improved execution of external players (thx to @hampelratte)
+x fixed generation of season poster file name #288
+x fixed displaying of the artwork chooser window on macOS
+x further improved Kodi scrapers
+x fixed actor artwork urls from tvdb scraper
+
+Version 2.9.11
+=======================
+x added Ł and ł in the ascii replacer
+x changed tvdb API to version 2
+
+Version 2.9.10
+=======================
++ feature: Kodi plugins now able to download images (movies)
+x fixed registering donator version
+
+Version 2.9.9
+=======================
++ removed usage of Google Analytics
++ added hebrew as media language (thx to @israelio)
+x several fixes in the OSX starter script
+x fixed opening of dialogs without parents
+x fixed occasional errors on closing
+x fixed downloading extrafanart/extrathumbs after network failures
+x improved downloading of artwork from movie/TV show editors
+x fixed auto select the first search result in the search windows
+x fixed sorting of movies in movie sets
+x fixed IMDB parsing from movie NFOs
+x improved IMDB scraping original titles
+x improved episode title detection (cleanup) 
+
+Version 2.9.8
+=======================
++ added frame rate from mediainfo
++ updated libmediainfo to 17.12
++ show result window of the "find missing movies" feature
+x fix IMDB language, release date and episode thumb parsing
+x fix parsing audio channel information
+x fix naming detection for 4k files
+x fix Kodi scraper plugins unicode decoding
+x improve Kodi scraper plugins http requests (correct headers)
+x added more java 9 compatibility options
+x fixed cancelling of actor image downloads
+x added 2160p to file name cleanup
+
+Version 2.9.7
+=======================
++ added DataTables export template - thx to @C. Janke
+x fixed the imdb scraper (imdb changed their web pages) - thx to @Grizzler89
+x fixed a parsing problem in the Kodi scraper
+x fixed movie renamer with animated posters
+
+Version 2.9.6
+=======================
++ add persian language
++ added option to include external audio files in Kodi NFO streamdetails (thx @midgetspy)  
++ support for mediainfo 17.10+ XMLs
++ updated mediainfo to 17.10
+x fixed java 9 compatibility issues
+x fix parsing MediaInfo for .ISO files (endless hanging sometimes)
+x reduced log output on the console for the command line version
+x fix animated pictures scraper; did not work on automatic scrape
+x fix AniDB scrape (too much results)
+x fix country tags in NFO (now multiple)
+x change episodeguide url in TvShow NFOs
+x cleaning of orphaned episodes in the database
+x storing of episodes in special seasons (season 0) no more switches to season -1
+x fix occassional crashes when writing objects to the database
+x fix audio codes parsing of audio files (thx @midgetspy)
+x fix renaming of movies with renamer token $2 and starting with umlauts
+
+Version 2.9.5
+=======================
++ added some more (common) languages to the available scraper languages
+x adapt IMDB site changes; getting plot works again
+x fix fanart.tv scraping (thread crash)
+x fix TMDB actor naming scrape
+x fix ANIDB scraper (no episode/season fetched)
+x fix Kodi scraper
+x fix of the bug report dialog (saving log files and layout)
+x some minor fixes
+
+
+Version 2.9.4
+=======================
+HIGHLIGHTS:
++ Kodi XML scrapers for TV shows! (Donator only)
++ MediaInfo changes: if you have high-res, 6+ channel, 4k files, 
+  it is recommended to do a "mediainfo reload" of all movies, to get the correct icons.  
++ Animated poster scraping (not always visible inside TMM, but on filesystem)
++ OMDb API scraper. Private scraper: details at http://www.omdbapi.com/ (thx @wjanes) - https://goo.gl/Duzhc6
+  TinyMediaManager offers a limited access to OMDb API (10 calls per 15 seconds)
+- removed the RottenTomates scraper because this service is no longer available for public usage
+
++ updated libmediainfo to 0.7.98
++ export movies/tv shows via command line #116
++ added fallback language scraping with tmdb scraper (thx @ProIcons) - https://goo.gl/a87VZc
++ fixed various templates to use correct graphics
++ added new templates
+  DeadSix27 HTML generator by DeadSix27 - https://forum.kodi.tv/showthread.php?tid=160863
+  Mobile Movie Search by Jennifer Gigliotti
++ added more icons for high res audio & video streams (Atmos, TrueHD, DTS:X, 4k)
++ added UltraHD Blu Ray as media source
++ added .sup as subtitle format for new installations #162
+  (existing ones may have to add this file type in the settings)
++ added video bit depth from mediainfo
++ added more detailed video resolutions #181 (thx @Gridluck)
++ preload settings screen for faster startup
+x enhanced autom. downloading of subtitles #157 (thx @ProIcons)
+x fixed handling for nested movie structures
+x fixed default value for copyArtwork exporting
+x fixed TV multi episode renaming #143
+x fixed handling of JPEG images
+x fixed storing preference for episode scrape
+x fixed deleting original graphics on cache-miss 
+x changed forum links to the kodi.tv domain #155
+x fixed some things in the image cache #153
+x fix some surround audio icons #117
+x fixed a mediaInformation JVM crash on some DVD ISO files
+x fixed/enhanced media source detection #172 (thx @ProIcons)
+x fixed detection of certain audio streams with mediainfo #173 (thx @ProIcons)
+x fixed the year field in the editors: now you can set the year to zero
+x better handling of network interruptions in the artwork downloader
+x fixed default window size of the bug report dialog #184 (thx @ProIcons)
+
+
+Version 2.9.3
+=======================
++ HOTFIX: use 0.7.93 MediaInfo lib, latest one crashes on ISO files!
++ EXPERIMENTAL: UPnP support - https://goo.gl/NieeJ8
++ updated libmediainfo to 0.7.94
++ changed display of runtime in media files tab to a shorter version with seconds
++ updated Trakt, now being able to scrape in user language (if available)
++ correct wrong TVDB entries, where year is specified in title
++ added movie edition to the NFOs
++ remember some choices you do in the UI (like chosen export folder, export template, ...)
++ added warning when exporting to a non empty directory
++ added button for TV show renamer in the top bar
++ enhanced video format detection #131
++ added "update single movie" (in addition of update datasource)
++ movie list: the indicator for missing artwork now respects your settings (poster/fanart only!)
++ some scraper can now scrape with the first aired date in addition to season/episode number
++ added movie sorting by release date
++ added spoken languages to MediaPortal NFO
++ write media source to episode NFOs too
+x enhanced season/episode parser
+x fixed several crashes when pressing the play button #139
+x fixed stacking detection #132
+x fixed some Trakt.tv syncing issues #137
+x fixed searching for movie set id in movie set editor
+x fixed scraping localized countries #110
+x automatically drop corrupt entries from the database
+x fixed actor image writing
+x fixed movie renamer token $1/$2 to use first alpha numeric character
+x fixed Plex trailers wrongly detected as extras #135
+x fix thumb image naming for disc style episodes
+x fix renaming of disc style episodes
+x fixed start of playback on several linux systems
+x fixed movie renamer where trailing dots have been truncated for folders
+x fixed writing of .actors thumbs
+x fixed reading of mediainfo.xml
+x fixed movie sorting
+x changed appearance of the subtitle download button #140 #119
+x fixed searching for TV show actors in the UI filter
+  you may need to restart tinyMediaManager once after the update
+
+
+Version 2.9.2
+=======================
++ added action: download missing artwork
++ added parsing of Synology VSMETA files
++ added shortcut (CTRL - F) to jump to the search field (thx @hampelratte)
++ improved user interaction for tags and genres (thx @hampelratte)
++ get a list of video files for TV show export with episode.videoFiles
++ added HDRip as an own media source
++ movie renamer: added $K token (first tag)
++ added moving of genres/tag in the movie editor
+x fixed localized artwork loading for brazilian users
+x fixed deleting of backup folder in windows #120
+x fixed detection/renaming of movieset artwork in movie folders #111
+x do not remove movie set artwork when removing movies from tmm #111
+x do not remove movie sets when removing movies/data sources from tmm #111
+x increased max memory setting for 64bit users to 2560MB
+x updated MediaInfo to 0.7.91
+x fixed parsing of media source
+
+
+Version 2.9.1
+=======================
++ added Trakt.tv scraper
++ added option in the bulk renamer to set/clear the sort title
++ updated libmediainfo to 0.7.90
++/x added escaping of file names/urls in the movie exporter
+x fixed loading of plugins from a network share
+x added a connector for XBMC/Kodi < v16
+x fixed some UI scaling issues
+x fixed NFO writing for multi movie folders
+x fixed settings for Turkish language (#102)
+x fixed renaming in case insensitive file systems (#101)
+x respect renamer settings for subtitle language tag when downloading
+x fixed language code detection (#107);
+  (user with swedish subs may have to rename their subs after upgrading!)
+
+
+Version 2.9
+=======================
+SCRAPER CHANGES: 
+You now have the option to scrape localized language/country names instead of ISO codes
+!Check your scraper config (IMDB/TMDB/MovieMeter.nl)!
+
+MOVIE SET CHANGES:
+Due to recent changes in Kodi we've changed our internal handling of movie sets:
+- the sorttitle of movies in a movie set is no longer used
+  (tinyMediaManager and Kodi use the release date to sort)
+- tinyMediaManager now supports the new NFO style for movie sets
+  (reading & writing; we also support reading the old style for importing)
+
+! Due to the NFO changes and sorttitle changes you should rewrite the NFO                   !
+! files of your movies if you use movie sets! (Don't forget to re-import your movies in Kodi) !
+
++ MediaInfo: parse pre-generated XMLs (mainly needed for ISO files)
++ added support for clearlogos
++ added a date picker for easier date editing
++ added automatic download of extra artwork for movie sets
++ implemented filtering for multiple tags (movie & TV shows)
++ implemented filtering for multiple datasources (movie & TV shows)
++ added play button in the movie chooser
++ added scraping of movie set artwork from fanart.tv
++ added connection throttling for anidb
++ added theatrical to movie editions
+x fixed subtitle downloading where language tag got stripped off
+x fixed a UI glitch in the movie renamer settings when no folder name has been chosen
+x fixed Kodi scraper detection on MacOS
+x some improvements to the TV show renamer
+x fixed update of offline data sources
+x fixed an occasional multi threading problem (ConcurrentModificationException)
+x fixed loading of online movie set artwork (if no local artwork has been found)
+x adhere graphic settings better for multiple movies in one directory / disc folders 
+x added filter indicator for TV shows too
+x fixed detection of episode files
+x improved episode name detection at import
+x fixed renaming TvShows on CMD line
+x fixed downloading of empty movie set image files
+x fixed changing the default scraper in the episode editor dialog
+x many internal changes....
+
