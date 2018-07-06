@@ -1,3 +1,33 @@
+#!/bin/bash
+
+# Docker Functions
+function docker_purge_all {
+  # Cleanly exit running containers
+  docker stop $(docker ps -aq 2>/dev/null) 2>/dev/null
+
+  # Delete all the things!
+  docker rm $(docker ps -aq 2>/dev/null) 2>/dev/null
+  docker rm -v $(docker ps -q 2>/dev/null) 2>/dev/null
+  docker rmi $(docker images -q 2>/dev/null) 2>/dev/null
+}
+
+function docker_refresh {
+  # Run the purge function from above
+  docker_purge_all
+
+  # Pull most-used base containers
+  docker pull alpine:3.8
+  docker pull ubuntu:18.04
+
+  # Pull my most-used containers
+  docker pull alexhaydock/get-iplayer
+  docker pull alexhaydock/glances
+  docker pull alexhaydock/htop
+  docker pull alexhaydock/smartctl
+  docker pull alexhaydock/wine-stable:i386
+  docker pull alexhaydock/youtube-dl
+}
+
 # Privileged Container Aliases
 alias glances="docker run --rm -it --pid host alexhaydock/glances"
 alias htop="docker run --rm -it --pid host alexhaydock/htop"
