@@ -32,9 +32,9 @@ function tmm {
     --ipc host \
     --memory='1g' \
     --cpus='2' \
-    -v "~/TinyMediaManager/data/":"/opt/tmm/data/" \
-    -v "~/TinyMediaManager/cache/":"/opt/tmm/cache/" \
-    -v "~/TinyMediaManager/backups/":"/opt/tmm/backups/" \
+    -v "$HOME/TinyMediaManager/data/":"/opt/tmm/data/" \
+    -v "$HOME/TinyMediaManager/cache/":"/opt/tmm/cache/" \
+    -v "$HOME/TinyMediaManager/backups/":"/opt/tmm/backups/" \
     -v tmm-media-archive:"/opt/media" \
     alexhaydock/tinymediamanager
 }
