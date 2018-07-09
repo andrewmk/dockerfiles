@@ -14,7 +14,7 @@ RUN set -xe \
     \
 # Add a package
     && apt-get -y install \
-          ca-certificates
+          ca-certificates \
           chromium \
           chromium-l10n \
           fonts-liberation \

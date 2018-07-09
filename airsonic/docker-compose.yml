@@ -1,0 +1,27 @@
+# We need to use Docker compose file version 2.3 to use resource constraints: https://github.com/docker/compose/issues/4513
+version: "2.3"
+
+services:
+
+# Important! - We have mounted the Music directory read-only here.
+# We don't want Airsonic having write access to it if it gets breached.
+  airsonic:
+    image: alexhaydock/airsonic
+    container_name: airsonic
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    expose:
+      - "80"
+    mem_limit: 1G
+    networks:
+      - airsonic
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /zpools/archive/arc/music/Library:/airsonic/music:ro
+      - /zpools/archive/priv/docker/airsonic/data:/airsonic/data
+      - /zpools/archive/priv/docker/airsonic/playlists:/airsonic/playlists
+      - /zpools/archive/priv/docker/airsonic/podcasts:/airsonic/podcasts
+
+networks:
+  airsonic:
