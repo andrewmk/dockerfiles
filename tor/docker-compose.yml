@@ -1,10 +1,11 @@
-version: '3.1'
+version: '2.3'
 
 services:
 
   tor:
     image: alexhaydock/tor
     container_name: tor
+    mem_limit: 128M
     ports:
       - "5353:5353/udp"
       - "9250:9050"
