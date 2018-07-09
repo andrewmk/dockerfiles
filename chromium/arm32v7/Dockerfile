@@ -1,7 +1,7 @@
 # You will want the custom seccomp profile:
 #     wget https://raw.githubusercontent.com/jessfraz/dotfiles/master/etc/docker/seccomp/chrome.json -O ~/chrome.json
 
-FROM debian:10
+FROM arm32v7/debian:10
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 # Setup Environment for Ubuntu
