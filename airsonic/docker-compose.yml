@@ -13,7 +13,7 @@ services:
       - 1.0.0.1
     expose:
       - "80"
-    mem_limit: 1G
+    mem_limit: 2G
     networks:
       - airsonic
     volumes:
