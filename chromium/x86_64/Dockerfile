@@ -1,7 +1,7 @@
 # You will want the custom seccomp profile:
 #     wget https://raw.githubusercontent.com/jessfraz/dotfiles/master/etc/docker/seccomp/chrome.json -O ~/chrome.json
 
-FROM debian:10
+FROM debian:buster
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 # Setup Environment for Ubuntu
@@ -34,8 +34,8 @@ RUN set -xe \
     && rm -rf /var/lib/apt/lists/ \
     \
 # Add 'chromium' user
-    && groupadd -r chromium \
-    && useradd -r -g chromium -G audio,video chromium \
+    && groupadd --system --gid 1000 chromium \
+    && useradd --system --uid 1000 --gid chromium -G audio,video chromium \
     && mkdir -p /home/chromium/Downloads \
     && chown -R chromium:chromium /home/chromium
 
