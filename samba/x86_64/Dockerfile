@@ -5,51 +5,53 @@
 # - Do not set "socket options" (Recent versions of Samba are well-tuned already)
 #
 
-FROM alpine:3.8
+FROM alpine:3.7
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-# Install Samba
-RUN apk --no-cache --no-progress upgrade && \
-    apk --no-cache --no-progress add bash samba shadow tini && \
+RUN set -xe \
+    \
+# Install Samba, Shadow (to manipulate UID/GID of user), and Tini (a tiny init for the container)
+    && apk --no-cache add bash samba shadow tini \
     \
 # Add Samba User
-    adduser -D -G users -H -S -g 'Samba User' -h /tmp smbuser && \
+    && adduser -D -G users -H -S -g 'Samba User' -h /tmp smbuser \
+    \
+# Define Samba Config File Location
+    && file="/etc/samba/smb.conf" \
     \
 # Edit Samba Config
-    file="/etc/samba/smb.conf" && \
-    sed -i 's|^;* *\(log file = \).*|   \1/dev/stdout|' $file && \
-    sed -i 's|^;* *\(load printers = \).*|   \1no|' $file && \
-    sed -i 's|^;* *\(printcap name = \).*|   \1/dev/null|' $file && \
-    sed -i 's|^;* *\(printing = \).*|   \1bsd|' $file && \
-    sed -i 's|^;* *\(unix password sync = \).*|   \1no|' $file && \
-    sed -i 's|^;* *\(preserve case = \).*|   \1yes|' $file && \
-    sed -i 's|^;* *\(short preserve case = \).*|   \1yes|' $file && \
-    sed -i 's|^;* *\(default case = \).*|   \1lower|' $file && \
-    sed -i '/Share Definitions/,$d' $file && \
-    echo '   pam password change = yes' >>$file && \
-    echo '   map to guest = bad user' >>$file && \
-    echo '   usershare allow guests = yes' >>$file && \
-    echo '   create mask = 0664' >>$file && \
-    echo '   force create mode = 0664' >>$file && \
-    echo '   directory mask = 0775' >>$file && \
-    echo '   force directory mode = 0775' >>$file && \
-    echo '   force user = smbuser' >>$file && \
-    echo '   force group = users' >>$file && \
-    echo '   follow symlinks = yes' >>$file && \
-    echo '   load printers = no' >>$file && \
-    echo '   printing = bsd' >>$file && \
-    echo '   printcap name = /dev/null' >>$file && \
-    echo '   disable spoolss = yes' >>$file && \
-    echo '   socket options = TCP_NODELAY' >>$file && \
-    echo '   strict locking = no' >>$file && \
-    echo '   vfs objects = recycle' >>$file && \
-    echo '   recycle:keeptree = yes' >>$file && \
-    echo '   recycle:versions = yes' >>$file && \
-    echo '   min protocol = SMB2' >>$file && \
-    echo '' >>$file && \
+    && sed -i 's|^;* *\(log file = \).*|   \1/dev/stdout|' $file \
+    && sed -i 's|^;* *\(load printers = \).*|   \1no|' $file \
+    && sed -i 's|^;* *\(printcap name = \).*|   \1/dev/null|' $file \
+    && sed -i 's|^;* *\(printing = \).*|   \1bsd|' $file \
+    && sed -i 's|^;* *\(unix password sync = \).*|   \1no|' $file \
+    && sed -i 's|^;* *\(preserve case = \).*|   \1yes|' $file \
+    && sed -i 's|^;* *\(short preserve case = \).*|   \1yes|' $file \
+    && sed -i 's|^;* *\(default case = \).*|   \1lower|' $file \
+    && sed -i '/Share Definitions/,$d' $file \
+    && echo '   pam password change = yes' >>$file \
+    && echo '   map to guest = bad user' >>$file \
+    && echo '   usershare allow guests = yes' >>$file \
+    && echo '   create mask = 0664' >>$file \
+    && echo '   force create mode = 0664' >>$file \
+    && echo '   directory mask = 0775' >>$file \
+    && echo '   force directory mode = 0775' >>$file \
+    && echo '   force user = smbuser' >>$file \
+    && echo '   force group = users' >>$file \
+    && echo '   follow symlinks = yes' >>$file \
+    && echo '   load printers = no' >>$file \
+    && echo '   printing = bsd' >>$file \
+    && echo '   printcap name = /dev/null' >>$file \
+    && echo '   disable spoolss = yes' >>$file \
+    && echo '   strict locking = no' >>$file \
+    && echo '   vfs objects = recycle' >>$file \
+    && echo '   recycle:keeptree = yes' >>$file \
+    && echo '   recycle:versions = yes' >>$file \
+    && echo '   min protocol = SMB2' >>$file \
+    && echo '' >>$file \
     \
 # Cleanup
-    rm -rf /tmp/*
+    && rm -rf /tmp/*
 
 COPY samba.sh /usr/bin/
 

@@ -11,9 +11,8 @@
 version: '2.3'
 
 services:
-
-# Note that "read_only: true" will mount the container's FS as read-only.
-# Helps with security, which Samba has had some notorious issues with recently.
+  # Note that "read_only: true" will mount the container's FS as read-only.
+  # Helps with security, which Samba has had some notorious issues with recently.
   samba:
     image: alexhaydock/samba
     container_name: samba
