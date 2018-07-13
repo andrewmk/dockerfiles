@@ -16,6 +16,7 @@ services:
 # Helps with security, which Samba has had some notorious issues with recently.
   samba:
     image: alexhaydock/samba
+    container_name: samba
     environment:
       RECYCLE:
       TZ: "Europe/London"

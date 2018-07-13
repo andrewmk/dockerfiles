@@ -1,24 +1,23 @@
+# Fork of: https://github.com/dperson/samba/blob/master/Dockerfile
+#
+# Fork changelog:
+# - Fix at alpine:3.8 rather than alpine:latest
+# - Do not set "socket options" (Recent versions of Samba are well-tuned already)
+#
+
 FROM alpine:3.8
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-# Differences from original file I forked this from:
-#  - Disabled setting 'socket options'. Recent versions of Samba are well-tuned out of the box.
-#  - Set 'hosts allow' and 'hosts deny' accordingly to only allow connections from RFC 1918 defined private neworks.
-
-# Install samba
-RUN set -xe \
-    \
 # Install Samba
-    && apk --no-cache add bash samba shadow tini \
+RUN apk --no-cache --no-progress upgrade && \
+    apk --no-cache --no-progress add bash samba shadow tini && \
     \
-# Add Samba Users
-    && adduser -D -G users -H -S -g 'Samba User' -h /tmp smbuser \
+# Add Samba User
+    adduser -D -G users -H -S -g 'Samba User' -h /tmp smbuser && \
     \
-# Specify Path to Samba Config
-    && file="/etc/samba/smb.conf" \
-    \
-# Change Config Variables to Saner Defaults
-    && sed -i 's|^;* *\(log file = \).*|   \1/dev/stdout|' $file && \
+# Edit Samba Config
+    file="/etc/samba/smb.conf" && \
+    sed -i 's|^;* *\(log file = \).*|   \1/dev/stdout|' $file && \
     sed -i 's|^;* *\(load printers = \).*|   \1no|' $file && \
     sed -i 's|^;* *\(printcap name = \).*|   \1/dev/null|' $file && \
     sed -i 's|^;* *\(printing = \).*|   \1bsd|' $file && \
@@ -41,23 +40,24 @@ RUN set -xe \
     echo '   printing = bsd' >>$file && \
     echo '   printcap name = /dev/null' >>$file && \
     echo '   disable spoolss = yes' >>$file && \
+    echo '   socket options = TCP_NODELAY' >>$file && \
     echo '   strict locking = no' >>$file && \
     echo '   vfs objects = recycle' >>$file && \
     echo '   recycle:keeptree = yes' >>$file && \
     echo '   recycle:versions = yes' >>$file && \
     echo '   min protocol = SMB2' >>$file && \
-    echo '' >>$file \
+    echo '' >>$file && \
     \
 # Cleanup
-    && rm -rf /tmp/*
+    rm -rf /tmp/*
 
-# Copy Startup Script (which will take variables passed to the container at runtime)
 COPY samba.sh /usr/bin/
 
-# Expose the Ports Needed for smbd (139, 445) and for nmbd (137/udp, 138/udp)
 EXPOSE 137/udp 138/udp 139 445
 
 HEALTHCHECK --interval=60s --timeout=15s \
              CMD smbclient -L '\\localhost\' -U 'guest%' -m SMB3
+
+VOLUME ["/etc/samba"]
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/samba.sh"]
