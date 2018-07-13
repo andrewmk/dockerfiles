@@ -1,7 +1,8 @@
+# docker-compose -f /zpools/archive/priv/docker/compose/samba/docker-compose.yml up -d --force-recreate
+
 # Share Security:
 #  - Container only has access to what it needs to share.
 #  - Directory to be shared is mounted into the container read-only.
-#  - Container FS is mounted read-only.
 #  - Samba settings export the share as read-only and allowing guest access.
 #  - UID/GID of the 'smbuser' is set to one that won't be given write permissions to files on host.
 #  - Minimum SMB version set to SMB2.
@@ -26,9 +27,10 @@ services:
     ports:
       - 139:139
       - 445:445
-    read_only: true
     tmpfs:
       - /tmp
+      - /var/cache/samba
+      - /var/log/samba
     stdin_open: true
     tty: true
     # Arguments can be provided to a share definition (-s) but the defaults set up
@@ -37,7 +39,7 @@ services:
     # for this share.
     volumes:
       - /zpools/archive/arc:/archive:ro
-    command: '-s "archive;/archive" -g "force user = nobody" -g "force group = nobody"'
+    command: '-s "archive;/archive" -g "force user = nobody" -g "force group = nobody" -g "hosts allow = 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 127.0.0.1" -g "hosts deny = all"'
 
 networks:
   samba:
