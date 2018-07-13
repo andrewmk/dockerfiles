@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/alexhaydock/samba.svg)](https://hub.docker.com/r/alexhaydock/samba "Badge")
+
 # Samba
 
 Samba docker container, forked from [dperson/samba](https://github.com/dperson/samba).
