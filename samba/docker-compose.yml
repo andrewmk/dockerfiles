@@ -36,7 +36,7 @@ services:
     # I've also overridden the 'force user' and 'force group' global config variable
     # for this share.
     volumes:
-      - /zpools/archive/priv/arc:/archive:ro
+      - /zpools/archive/arc:/archive:ro
     command: '-s "archive;/archive" -g "force user = nobody" -g "force group = nobody"'
 
 networks:
