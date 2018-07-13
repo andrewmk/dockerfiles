@@ -46,8 +46,6 @@ RUN set -xe \
     echo '   recycle:keeptree = yes' >>$file && \
     echo '   recycle:versions = yes' >>$file && \
     echo '   min protocol = SMB2' >>$file && \
-    echo '   hosts allow = 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 127.0.0.1' >>$file && \
-    echo '   hosts deny = all' >>$file && \
     echo '' >>$file \
     \
 # Cleanup
@@ -61,8 +59,5 @@ EXPOSE 137/udp 138/udp 139 445
 
 HEALTHCHECK --interval=60s --timeout=15s \
              CMD smbclient -L '\\localhost\' -U 'guest%' -m SMB3
-
-# Store Samba Config in a Volume (Can be overridden with a bind mount)
-VOLUME ["/etc/samba"]
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/samba.sh"]
