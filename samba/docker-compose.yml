@@ -1,0 +1,43 @@
+# Share Security:
+#  - Container only has access to what it needs to share.
+#  - Directory to be shared is mounted into the container read-only.
+#  - Container FS is mounted read-only.
+#  - Samba settings export the share as read-only and allowing guest access.
+#  - UID/GID of the 'smbuser' is set to one that won't be given write permissions to files on host.
+#  - Minimum SMB version set to SMB2.
+#  - User/Group set to 'nobody' on the share I've configured in this file.
+
+version: '2.3'
+
+services:
+
+# Note that "read_only: true" will mount the container's FS as read-only.
+# Helps with security, which Samba has had some notorious issues with recently.
+  samba:
+    image: alexhaydock/samba
+    environment:
+      RECYCLE:
+      TZ: "Europe/London"
+      USERID: "5005"
+      GROUPID: "5005"
+    mem_limit: 1G
+    networks:
+      - samba
+    ports:
+      - 139:139
+      - 445:445
+    read_only: true
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    # Arguments can be provided to a share definition (-s) but the defaults set up
+    # a browsable read only share, which is what I want. Read the README for more.
+    # I've also overridden the 'force user' and 'force group' global config variable
+    # for this share.
+    volumes:
+      - /zpools/archive/priv/arc:/archive:ro
+    command: '-s "archive;/archive" -g "force user = nobody" -g "force group = nobody"'
+
+networks:
+  samba:
