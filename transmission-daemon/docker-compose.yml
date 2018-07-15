@@ -10,8 +10,8 @@ services:
       - 1.1.1.1
       - 1.0.0.1
     environment:
-      - UID: 5005
-      - GID: 5005
+      USERID: "5001"
+      GROUPID: "5001"
     mem_limit: 2G
     ports:
       - "9091:9091"
