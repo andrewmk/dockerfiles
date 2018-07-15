@@ -7,7 +7,7 @@ COPY docker-entrypoint.sh /usr/bin/
 RUN set -xe \
     \
 # Install transmission-daemon and shadow (shadow allows us to use 'usermod' and 'groupmod')
-    && apk --no-cache add transmission-daemon shadow sudo tini \
+    && apk --no-cache add transmission-daemon bash shadow sudo tini \
     \
 # Modify the UID and GID of the automatically-enabled 'transmission' user and group to 1000
     && usermod -u 1000 transmission \

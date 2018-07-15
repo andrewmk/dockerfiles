@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set config location
 export TRANSMISSION_HOME='/transmission/config'
@@ -8,4 +8,4 @@ export TRANSMISSION_HOME='/transmission/config'
 [[ "${GROUPID:-""}" =~ ^[0-9]+$ ]] && groupmod -g $GROUPID -o transmission
 
 # Start Transmission
-sudo -u transmission "/usr/bin/transmission-daemon && sleep 999d"
+sudo -u transmission "/usr/bin/transmission-daemon" && sleep 999d
