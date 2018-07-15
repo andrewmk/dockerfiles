@@ -4,7 +4,7 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 RUN set -xe \
     \
 # Install transmission-daemon and shadow (shadow allows us to use 'usermod' and 'groupmod')
-    && apk --no-cache add transmission-daemon shadow \
+    && apk --no-cache add transmission-daemon shadow sudo tini \
     \
 # Modify the UID and GID of the automatically-enabled 'transmission' user and group to 1000
     && usermod -u 1000 transmission \
@@ -14,15 +14,11 @@ RUN set -xe \
     && mkdir -p /transmission/config \
     && chmod -R 1777 /transmission \
     \
-# Create a Transmission startup script and make it executable
-    && echo "#!/bin/sh" > /transmission/start.sh \
-    && echo "export TRANSMISSION_HOME='/transmission/config'" >> /transmission/start.sh \
-    && echo "/usr/bin/transmission-daemon && sleep 999d" >> /transmission/start.sh \
-    && chmod +x /transmission/start.sh \
-    \
-# Remove shadow package to decrease attack surface
-    && apk del shadow
+# Cleanup
+    && rm -rf /tmp/*
+
+# Add Script
+COPY docker-entrypoint.sh /usr/bin/
 
 # Run
-USER transmission
-ENTRYPOINT ["/transmission/start.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/docker-entrypoint.sh"]

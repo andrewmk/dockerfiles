@@ -1,7 +1,10 @@
+# WARNING: The Samba version shipped with Alpine 3.8 does not work
+#          with this Dockerfile, so I am using 3.7 for the time being.
+
 # Fork of: https://github.com/dperson/samba/blob/master/Dockerfile
 #
 # Fork changelog:
-# - Fix at alpine:3.8 rather than alpine:latest
+# - Fix at alpine:3.7 rather than alpine:latest
 # - Do not set "socket options" (Recent versions of Samba are well-tuned already)
 #
 

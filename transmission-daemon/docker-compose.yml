@@ -1,15 +1,17 @@
 version: "2.3"
 
+# Set the USERID and GROUPID environment variables to the User/Group
+# IDs that you want Transmission to run under.
 services:
-
   transmission:
     image: alexhaydock/transmission-daemon
     container_name: transmission
-    cap_drop:
-      - ALL
     dns:
       - 1.1.1.1
       - 1.0.0.1
+    environment:
+      - UID: 5005
+      - GID: 5005
     mem_limit: 2G
     ports:
       - "9091:9091"
