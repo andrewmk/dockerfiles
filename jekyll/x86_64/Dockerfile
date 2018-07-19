@@ -1,31 +1,21 @@
-FROM alpine:3.8
+FROM ruby:alpine
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-# About the packages installed in this Docker image:
-# (the ruby-dev package provides Ruby headers that will be used by some of the Gems pulled in by Bundler).
-# (zlib and zlib-dev are also required by some of the Gems, particularly Nokogiri)
-# (ruby-json prevents Jekyll from throwing a parsing error at build time)
-
-# Environment
-WORKDIR /tmp/jekyll
-
-# Add the Gemfile that defines the Gems we want Ruby to install
-ADD Gemfile /tmp/Gemfile
-
-# Install Ruby and the build packages we need
 RUN set -xe \
     \
-# Install core package dependencies
-    && apk --no-cache add build-base ruby ruby-bundler ruby-dev ruby-json zlib zlib-dev \
+# Install build-deps for gems
+    && apk --no-cache add gcc g++ make \
     \
-# Install GitHub Pages
-    && bundle install \
-    && rm -v /tmp/Gemfile /tmp/Gemfile.lock \
+# Install gems
+    && gem install github-pages \
+    && gem install coderay \
+    && gem install rake \
+    && gem install yajl-ruby \
     \
-# Remove build packages and compilers to slim down final image
-    && apk del build-base
+# Remove packages
+    && apk del gcc g++ make
 
 # Run
-# (If no arguments are provided by the user then CMD applies and we will start a server on 0.0.0.0)
-ENTRYPOINT ["/usr/bin/jekyll"]
-CMD ["serve","-H","0.0.0.0"]
+WORKDIR /tmp/jekyll
+EXPOSE 4000
+CMD ["jekyll", "serve", "--host", "0.0.0.0"]
