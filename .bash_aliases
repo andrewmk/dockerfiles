@@ -46,24 +46,31 @@ alias youtube_dl="docker run --rm -it --memory='512m' --cpus='1' -v `pwd`:'/tmp/
 # Container Functions
 function beet {
   docker run --rm -it \
-    --memory='512m' \
-    --cpus='1' \
+    --memory='512M' \
     -v '/zpools/archive/arc/music/.beets/':'/opt/.beets/' \
     -v '/zpools/archive/arc/music/Library/':'/opt/library/' \
     -v '/zpools/archive/priv/transmission/RED/':'/zpools/archive/priv/transmission/RED/' \
     alexhaydock/beets "$@"
 }
 
+function rclone {
+  docker run --rm -it \
+    --name rclone \
+    --memory='1G' \
+    -v "/zpools/archive/priv/docker/rclone":"/root/.config/rclone" \
+    -v "/zpools/archive":"/zpools/archive":ro \
+    alexhaydock/rclone "$@"
+}
+
 function tmm {
   docker run --rm -it \
     --name tinymediamanager \
     -e DISPLAY \
-    -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-    -v ~/.Xauthority:/home/user/.Xauthority:ro \
+    -v "/tmp/.X11-unix":"/tmp/.X11-unix":ro \
+    -v "$HOME/.Xauthority":"/home/user/.Xauthority":ro \
     --net host \
     --ipc host \
-    --memory='1g' \
-    --cpus='2' \
+    --memory='1G' \
     -v "$HOME/TinyMediaManager/data/":"/opt/tmm/data/" \
     -v "$HOME/TinyMediaManager/cache/":"/opt/tmm/cache/" \
     -v "$HOME/TinyMediaManager/backups/":"/opt/tmm/backups/" \

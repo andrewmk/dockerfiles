@@ -29,4 +29,4 @@ RUN chmod +x /usr/local/bin/run.sh
 # Run
 EXPOSE $AIRSONIC_PORT
 HEALTHCHECK CMD wget -q http://localhost:"$AIRSONIC_PORT""$CONTEXT_PATH"/rest/ping -O /dev/null || exit 1
-ENTRYPOINT ["tini", "--", "run.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "docker-entrypoint.sh"]
