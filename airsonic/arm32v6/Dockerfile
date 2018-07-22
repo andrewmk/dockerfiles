@@ -23,10 +23,10 @@ RUN apk --no-cache add \
 
 # Add AirSonic and run script
 ADD https://github.com/airsonic/airsonic/releases/download/v${AIRSONIC_VER}/airsonic.war airsonic.war
-COPY run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Run
 EXPOSE $AIRSONIC_PORT
 HEALTHCHECK CMD wget -q http://localhost:"$AIRSONIC_PORT""$CONTEXT_PATH"/rest/ping -O /dev/null || exit 1
-ENTRYPOINT ["/sbin/tini", "--", "docker-entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/docker-entrypoint.sh"]
