@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM arm32v6/alpine:3.8
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh

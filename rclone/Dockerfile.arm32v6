@@ -1,0 +1,14 @@
+#### Build Container ####
+# We can't use multi-stage builds yet with the version of
+# Docker that's available in Raspbian.
+FROM arm32v6/alpine:3.8
+
+RUN apk --no-cache add ca-certificates unzip
+ADD https://downloads.rclone.org/rclone-current-linux-arm.zip rclone.zip
+RUN unzip rclone.zip
+RUN cd rclone-*-linux-arm \
+    && cp rclone /usr/bin/
+RUN chown root:root /usr/bin/rclone
+RUN chmod 755 /usr/bin/rclone
+
+ENTRYPOINT ["/usr/bin/rclone"]

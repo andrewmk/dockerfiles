@@ -4,7 +4,8 @@
 FROM arm32v6/alpine:3.8
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-ARG AIRSONIC_VER="10.1.1"
+# ARG unsupported on Raspbian version of Docker
+ENV AIRSONIC_VER="10.1.1"
 
 ENV AIRSONIC_PORT=80 AIRSONIC_DIR=/airsonic CONTEXT_PATH=/
 
@@ -28,5 +29,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Run
 EXPOSE $AIRSONIC_PORT
-HEALTHCHECK CMD wget -q http://localhost:"$AIRSONIC_PORT""$CONTEXT_PATH"/rest/ping -O /dev/null || exit 1
+# HEALTHCHECK unsupported on Raspbian version of Docker
+#HEALTHCHECK CMD wget -q http://localhost:"$AIRSONIC_PORT""$CONTEXT_PATH"/rest/ping -O /dev/null || exit 1
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/docker-entrypoint.sh"]

@@ -5,7 +5,7 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 ENV GOPATH /usr/local
 
 # Add startup script for OnionScan
-ADD start.sh /opt/start.sh
+ADD docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
 RUN set -xe \
     \
@@ -28,10 +28,10 @@ RUN set -xe \
     && echo "RunAsDaemon 1" > /etc/tor/torrc \
     \
 # Make startup script executable
-    && chmod +x /opt/start.sh \
+    && chmod +x /usr/bin/docker-entrypoint.sh \
     \
 # Create a directory for us to execute OnionScan inside
-    && mkdir /opt/onionscan \
+    && mkdir -p /opt/onionscan \
     && chown -R tor /opt/onionscan \
     \
 # Remove build packages and compilers to slim down final image
@@ -44,5 +44,5 @@ USER tor
 # Run
 # (This script passes arguments given to the Docker command straight to the OnionScan binary. If no argument
 # is given then the CMD will apply and OnionScan will run a scan of the DuckDuckGo hidden service).
-ENTRYPOINT ["/opt/start.sh"]
+ENTRYPOINT ["/usr/bin/docker-entrypoint.sh]
 CMD ["3g2upl4pq6kufc4m.onion"]

@@ -1,7 +1,8 @@
 FROM arm32v6/alpine:3.8
 
 # Version
-ARG RIPME_VERSION=1.7.59
+# ARG unsupported on Raspbian version of Docker
+ENV RIPME_VERSION=1.7.59
 
 # Install Deps
 RUN apk add --no-cache ca-certificates openjdk8-jre
