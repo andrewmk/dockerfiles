@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set xhost local:docker
+xhost local:docker
 
 docker run --rm -it \
     --name jabref \
@@ -10,4 +10,5 @@ docker run --rm -it \
     --net host \
     --ipc host \
     --memory='1g' \
-    jabref
+    -v ~/JabRef:/root \
+    alexhaydock/jabref
