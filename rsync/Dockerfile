@@ -3,7 +3,7 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 COPY docker-entrypoint.sh /usr/bin/
 
-RUN apk --no-cache add rsync openssh-client bash shadow sudo
+RUN apk --no-cache add rsync openssh-client bash shadow sudo tini
 
 # Add 'user' user and group with IDs of 1000
 RUN addgroup -S user \
@@ -11,4 +11,4 @@ RUN addgroup -S user \
     && usermod -u 1000 -o user \
     && groupmod -g 1000 -o user
 
-ENTRYPOINT [ "/usr/bin/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/sbin/tini", "--", "/usr/bin/docker-entrypoint.sh" ]
