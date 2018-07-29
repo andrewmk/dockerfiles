@@ -9,4 +9,4 @@ RUN apk --no-cache add htop
 
 ADD htoprc /root/.config/htop/htoprc
 
-CMD [ "/usr/bin/htop" ]
+ENTRYPOINT [ "/usr/bin/htop" ]

@@ -3,4 +3,4 @@ LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
 RUN apk --no-cache add ca-certificates curl
 
-CMD [ "/usr/bin/curl" ]
+ENTRYPOINT [ "/usr/bin/curl" ]
