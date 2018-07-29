@@ -1,6 +1,6 @@
 FROM arm32v6/alpine:3.8
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
 
-RUN apk --no-cache add rsync
+RUN apk --no-cache add rsync openssh-client
 
 ENTRYPOINT [ "/usr/bin/rsync" ]
