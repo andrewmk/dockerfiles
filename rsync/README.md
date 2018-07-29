@@ -8,5 +8,5 @@ docker run --rm -it alexhaydock/rsync
 
 You will need to use bind mounts for the directories you wish to move within:
 ```
-docker run --rm -it -v $HOME:$HOME alexhaydock/rsync -avsh --delete $HOME/sourcefolder/ ssh@1.2.3.4:/remote/destination/
+docker run --rm -it -e USERID=$(id -u) -e GROUPID=$(id -g) -v $HOME:$HOME alexhaydock/rsync -avsh --delete $HOME/sourcefolder/ ssh@1.2.3.4:/remote/destination/
 ```
